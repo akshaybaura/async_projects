@@ -1,0 +1,5 @@
+asyncio
+aiohttp
+requests
+polars
+beautifulsoup4

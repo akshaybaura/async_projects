@@ -1,0 +1,35 @@
+{
+    "name": "Patient",
+    "type": "record",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "age",
+            "type": "int",
+            "default": -2
+        },
+        {
+            "name": "institution",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "activity",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "comment",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "extracted_ts",
+            "type": "double",
+            "default": 0
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+asyncio
+aiohttp
+confluent-kafka
+requests
+avro

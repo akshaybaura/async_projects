@@ -1,0 +1,124 @@
+{
+    "name": "Taxi",
+    "type": "record",
+    "fields": [
+        {
+            "name": "trip_id",
+            "type": "string"
+        },
+        {
+            "name": "taxi_id",
+            "type": "string"
+        },
+        {
+            "name": "trip_start_timestamp",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "trip_end_timestamp",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "trip_seconds",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "trip_miles",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "pickup_census_tract",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "dropoff_census_tract",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "pickup_community_area",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "dropoff_community_area",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "fairs",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "tips",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "tolls",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "extras",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "trip_total",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "payment_type",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "company",
+            "type": "string",
+            "default": ""
+        },
+        {
+            "name": "pickup_centroid_latitude",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "pickup_centroid_longitude",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "pickup_centroid_location",
+            "type": "string",
+            "default": "{}" 
+        },
+        {
+            "name": "dropoff_centroid_latitude",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "dropoff_centroid_longitude",
+            "type": "float",
+            "default": 0
+        },
+        {
+            "name": "dropoff_centroid_location",
+            "type": "string",
+            "default": "{}"       
+        },
+        {
+            "name": "extracted_ts",
+            "type": "float",
+            "default": 0
+        }
+    ]
+}
