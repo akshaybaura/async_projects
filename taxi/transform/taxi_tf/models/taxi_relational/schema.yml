@@ -1,0 +1,57 @@
+version: 2
+
+sources:
+  - name: trips
+    database: postgres  
+    schema: public
+    tables:
+      - name: trips
+        columns:
+          - name: trip_id
+            tests:
+              - not_null
+              - unique:
+                  config:
+                    severity: error
+                    error_if: ">60000"
+                    warn_if: ">10"
+models:
+  - name: dim_payment_types
+    columns:
+      - name: payment_type
+        tests:
+          - accepted_values:
+              values: ['Unknown', 'Prcard', 'Mobile', 'Dispute', 'No Charge', 'Credit Card', 'Cash']
+
+  - name: fact_taxi_rides
+    columns:
+      - name: taxi_sk
+        tests:
+          - relationships:
+              to: ref('dim_taxi')
+              field: taxi_sk
+      - name: pickup_census_tract_sk
+        tests:
+          - relationships:
+              to: ref('dim_census_tracts')
+              field: census_tract_sk
+      - name: dropoff_census_tract_sk
+        tests:
+          - relationships:
+              to: ref('dim_census_tracts')
+              field: census_tract_sk
+      - name: pickup_community_area_sk
+        tests:
+          - relationships:
+              to: ref('dim_community_area')
+              field: community_area_sk
+      - name: dropoff_community_area_sk
+        tests:
+          - relationships:
+              to: ref('dim_community_area')
+              field: community_area_sk
+      - name: company_sk
+        tests:
+          - relationships:
+              to: ref('dim_company')
+              field: company_sk

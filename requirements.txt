@@ -3,3 +3,8 @@ aiohttp
 confluent-kafka
 requests
 avro
+pydantic
+fastavro
+backoff
+connectorx
+pyarrow

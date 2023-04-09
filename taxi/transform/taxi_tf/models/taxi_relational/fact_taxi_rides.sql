@@ -27,7 +27,7 @@ select txn.trip_id,
     d_company.company_sk,
     d_paytypes.payment_type_sk,
     current_timestamp as _insert_ts
-    from {{source('taxi', 'taxi')}} txn
+    from {{source('trips', 'trips')}} txn
     left join {{ ref('dim_taxi')}} d_taxi
     on txn.taxi_id = d_taxi.taxi_id
     left join {{ ref('dim_census_tracts')}} d_pickup_tracts

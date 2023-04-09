@@ -16,10 +16,10 @@ from
     row_number() over (partition by census_tract_id order by trip_start_timestamp desc) as rn
     from
     (select pickup_census_tract as census_tract_id, trip_start_timestamp, 'dummy tract name' tract_name,'dummy county' county, 'dummy state' state
-    from {{source('taxi', 'taxi')}}
+    from {{source('trips', 'trips')}}
     union
     select dropoff_census_tract as census_tract_id, trip_start_timestamp, 'dummy tract name' tract_name,'dummy county' county, 'dummy state' state
-    from {{source('taxi', 'taxi')}}) census_tract
+    from {{source('trips', 'trips')}}) census_tract
         {% if is_incremental() %}
         join (select max(last_trip_ts) as max_last_trip_ts from {{this}}) a on 1=1
         where census_tract.trip_start_timestamp > a.max_last_trip_ts

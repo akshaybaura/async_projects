@@ -74,19 +74,19 @@ async def fetch_page(session, page_size, page_num):
 
 def produce_async(sublist):
     count = 0
-    try:
-        for item in sublist:
+    for item in sublist:
+        try:
             item['extracted_ts'] = time.time()
             p.send_record(item)        
-    except TypeError as typeerr:
-        print(f'Non blocking error encountered producing record to kafka. Error: {typeerr}')
-        print(f'record: {item}')
-    except Exception as e:
-        print(f'Blocking error encountered producing record to kafka. Error: {e}')
-        print(f'record: {item}')
-        raise e
-    else: 
-        count += 1
+        except TypeError as typeerr:
+            print(f'Non blocking error encountered producing record to kafka. Error: {typeerr}')
+            print(f'record: {item}')
+        except Exception as e:
+            print(f'Blocking error encountered producing record to kafka. Error: {e}')
+            print(f'record: {item}')
+            raise e
+        else: 
+            count += 1
     return count
 
 async def fetch_all_data(total):

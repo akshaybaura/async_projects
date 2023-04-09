@@ -3,8 +3,9 @@
 gateway=$(docker inspect postgresql -f "{{json .NetworkSettings.Networks }}" | jq -r '.taxi_default."Gateway"')
 
 read -p "Enter the topic name: " topic
+read -p "Enter the destination table name: " table
 
-curl_cmd='curl -X PUT http://localhost:8083/connectors/taxi-sink-postgres/config 
+curl_cmd='curl -X PUT http://localhost:8083/connectors/taxi-sink-pg/config 
     -H "Content-Type: application/json" 
     -d '\''{
         "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
@@ -16,7 +17,7 @@ curl_cmd='curl -X PUT http://localhost:8083/connectors/taxi-sink-postgres/config
         "auto.create": "true",
         "auto.evolve":"true",
         "insert.mode": "insert",
-        "table.name.format":"taxi"
+        "table.name.format":"'$table'"
     }'\'''
 
 echo $curl_cmd
